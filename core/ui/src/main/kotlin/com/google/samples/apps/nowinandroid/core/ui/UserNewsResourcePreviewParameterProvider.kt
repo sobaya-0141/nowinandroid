@@ -17,12 +17,12 @@
 package com.google.samples.apps.nowinandroid.core.ui
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.NewsResource
+import sobaya.app.sharemodel.ThemeBrand
+import sobaya.app.sharemodel.Topic
+import sobaya.app.sharemodel.UserData
+import sobaya.app.sharemodel.UserNewsResource
 import com.google.samples.apps.nowinandroid.core.ui.PreviewParameterData.newsResources
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
@@ -34,25 +34,25 @@ import kotlinx.datetime.toInstant
  * This [PreviewParameterProvider](https://developer.android.com/reference/kotlin/androidx/compose/ui/tooling/preview/PreviewParameterProvider)
  * provides list of [UserNewsResource] for Composable previews.
  */
-class UserNewsResourcePreviewParameterProvider : PreviewParameterProvider<List<UserNewsResource>> {
+class UserNewsResourcePreviewParameterProvider : PreviewParameterProvider<List<sobaya.app.sharemodel.UserNewsResource>> {
 
-    override val values: Sequence<List<UserNewsResource>> = sequenceOf(newsResources)
+    override val values: Sequence<List<sobaya.app.sharemodel.UserNewsResource>> = sequenceOf(newsResources)
 }
 
 object PreviewParameterData {
 
-    private val userData: UserData = UserData(
+    private val userData: sobaya.app.sharemodel.UserData = sobaya.app.sharemodel.UserData(
         bookmarkedNewsResources = setOf("1", "3"),
         viewedNewsResources = setOf("1", "2", "4"),
         followedTopics = emptySet(),
-        themeBrand = ThemeBrand.ANDROID,
-        darkThemeConfig = DarkThemeConfig.DARK,
+        themeBrand = sobaya.app.sharemodel.ThemeBrand.ANDROID,
+        darkThemeConfig = sobaya.app.sharemodel.DarkThemeConfig.DARK,
         shouldHideOnboarding = true,
         useDynamicColor = false,
     )
 
     val topics = listOf(
-        Topic(
+        sobaya.app.sharemodel.Topic(
             id = "2",
             name = "Headlines",
             shortDescription = "News we want everyone to see",
@@ -60,7 +60,7 @@ object PreviewParameterData {
             imageUrl = "https://firebasestorage.googleapis.com/v0/b/now-in-android.appspot.com/o/img%2Fic_topic_Headlines.svg?alt=media&token=506faab0-617a-4668-9e63-4a2fb996603f",
             url = "",
         ),
-        Topic(
+        sobaya.app.sharemodel.Topic(
             id = "3",
             name = "UI",
             shortDescription = "Material Design, Navigation, Text, Paging, Accessibility (a11y), Internationalization (i18n), Localization (l10n), Animations, Large Screens, Widgets",
@@ -68,7 +68,7 @@ object PreviewParameterData {
             imageUrl = "https://firebasestorage.googleapis.com/v0/b/now-in-android.appspot.com/o/img%2Fic_topic_UI.svg?alt=media&token=0ee1842b-12e8-435f-87ba-a5bb02c47594",
             url = "",
         ),
-        Topic(
+        sobaya.app.sharemodel.Topic(
             id = "4",
             name = "Testing",
             shortDescription = "CI, Espresso, TestLab, etc",
@@ -79,8 +79,8 @@ object PreviewParameterData {
     )
 
     val newsResources = listOf(
-        UserNewsResource(
-            newsResource = NewsResource(
+        sobaya.app.sharemodel.UserNewsResource(
+            newsResource = sobaya.app.sharemodel.NewsResource(
                 id = "1",
                 title = "Android Basics with Compose",
                 content = "We released the first two units of Android Basics with Compose, our first free course that teaches Android Development with Jetpack Compose to anyone; you do not need any prior programming experience other than basic computer literacy to get started. You’ll learn the fundamentals of programming in Kotlin while building Android apps using Jetpack Compose, Android’s modern toolkit that simplifies and accelerates native UI development. These two units are just the beginning; more will be coming soon. Check out Android Basics with Compose to get started on your Android development journey",
@@ -100,8 +100,8 @@ object PreviewParameterData {
             ),
             userData = userData,
         ),
-        UserNewsResource(
-            newsResource = NewsResource(
+        sobaya.app.sharemodel.UserNewsResource(
+            newsResource = sobaya.app.sharemodel.NewsResource(
                 id = "2",
                 title = "Thanks for helping us reach 1M YouTube Subscribers",
                 content = "Thank you everyone for following the Now in Android series and everything the " +
@@ -116,8 +116,8 @@ object PreviewParameterData {
             ),
             userData = userData,
         ),
-        UserNewsResource(
-            newsResource = NewsResource(
+        sobaya.app.sharemodel.UserNewsResource(
+            newsResource = sobaya.app.sharemodel.NewsResource(
                 id = "3",
                 title = "Transformations and customisations in the Paging Library",
                 content = "A demonstration of different operations that can be performed " +

@@ -19,7 +19,7 @@ package com.google.samples.apps.nowinandroid.core.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
+import sobaya.app.sharemodel.NewsResource
 import kotlinx.datetime.Instant
 
 /**
@@ -41,7 +41,7 @@ data class NewsResourceEntity(
     val type: String,
 )
 
-fun NewsResourceEntity.asExternalModel() = NewsResource(
+fun NewsResourceEntity.asExternalModel() = sobaya.app.sharemodel.NewsResource(
     id = id,
     title = title,
     content = content,

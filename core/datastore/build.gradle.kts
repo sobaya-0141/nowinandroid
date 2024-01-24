@@ -62,7 +62,7 @@ androidComponents.beforeVariants {
 
 dependencies {
     implementation(projects.core.common)
-    implementation(projects.core.model)
+    implementation(projects.core.shareModel)
     implementation(libs.androidx.dataStore.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.protobuf.kotlin.lite)

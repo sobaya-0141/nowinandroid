@@ -18,11 +18,11 @@ package com.google.samples.apps.nowinandroid.core.domain
 
 import com.google.samples.apps.nowinandroid.core.data.repository.SearchContentsRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.SearchResult
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.UserSearchResult
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.SearchResult
+import sobaya.app.sharemodel.UserData
+import sobaya.app.sharemodel.UserNewsResource
+import sobaya.app.sharemodel.UserSearchResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
@@ -37,22 +37,22 @@ class GetSearchContentsUseCase @Inject constructor(
 
     operator fun invoke(
         searchQuery: String,
-    ): Flow<UserSearchResult> =
+    ): Flow<sobaya.app.sharemodel.UserSearchResult> =
         searchContentsRepository.searchContents(searchQuery)
             .mapToUserSearchResult(userDataRepository.userData)
 }
 
-private fun Flow<SearchResult>.mapToUserSearchResult(userDataStream: Flow<UserData>): Flow<UserSearchResult> =
+private fun Flow<sobaya.app.sharemodel.SearchResult>.mapToUserSearchResult(userDataStream: Flow<sobaya.app.sharemodel.UserData>): Flow<sobaya.app.sharemodel.UserSearchResult> =
     combine(userDataStream) { searchResult, userData ->
-        UserSearchResult(
+        sobaya.app.sharemodel.UserSearchResult(
             topics = searchResult.topics.map { topic ->
-                FollowableTopic(
+                sobaya.app.sharemodel.FollowableTopic(
                     topic = topic,
                     isFollowed = topic.id in userData.followedTopics,
                 )
             },
             newsResources = searchResult.newsResources.map { news ->
-                UserNewsResource(
+                sobaya.app.sharemodel.UserNewsResource(
                     newsResource = news,
                     userData = userData,
                 )

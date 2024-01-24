@@ -17,8 +17,8 @@
 package com.google.samples.apps.nowinandroid.core.domain
 
 import com.google.samples.apps.nowinandroid.core.domain.TopicSortField.NAME
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.Topic
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestTopicsRepository
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestUserDataRepository
 import com.google.samples.apps.nowinandroid.core.testing.util.MainDispatcherRule
@@ -53,9 +53,9 @@ class GetFollowableTopicsUseCaseTest {
         // Check that the order hasn't changed and that the correct topics are marked as followed.
         assertEquals(
             listOf(
-                FollowableTopic(testTopics[0], true),
-                FollowableTopic(testTopics[1], false),
-                FollowableTopic(testTopics[2], true),
+                sobaya.app.sharemodel.FollowableTopic(testTopics[0], true),
+                sobaya.app.sharemodel.FollowableTopic(testTopics[1], false),
+                sobaya.app.sharemodel.FollowableTopic(testTopics[2], true),
             ),
             followableTopics.first(),
         )
@@ -78,14 +78,14 @@ class GetFollowableTopicsUseCaseTest {
             testTopics
                 .sortedBy { it.name }
                 .map {
-                    FollowableTopic(it, false)
+                    sobaya.app.sharemodel.FollowableTopic(it, false)
                 },
         )
     }
 }
 
 private val testTopics = listOf(
-    Topic("1", "Headlines", "", "", "", ""),
-    Topic("2", "Android Studio", "", "", "", ""),
-    Topic("3", "Compose", "", "", "", ""),
+    sobaya.app.sharemodel.Topic("1", "Headlines", "", "", "", ""),
+    sobaya.app.sharemodel.Topic("2", "Android Studio", "", "", "", ""),
+    sobaya.app.sharemodel.Topic("3", "Compose", "", "", "", ""),
 )

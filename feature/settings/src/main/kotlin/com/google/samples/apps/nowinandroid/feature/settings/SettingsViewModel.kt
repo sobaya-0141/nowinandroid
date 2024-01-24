@@ -19,8 +19,8 @@ package com.google.samples.apps.nowinandroid.feature.settings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.ThemeBrand
 import com.google.samples.apps.nowinandroid.feature.settings.SettingsUiState.Loading
 import com.google.samples.apps.nowinandroid.feature.settings.SettingsUiState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -58,13 +58,13 @@ class SettingsViewModel @Inject constructor(
                 initialValue = Loading,
             )
 
-    fun updateThemeBrand(themeBrand: ThemeBrand) {
+    fun updateThemeBrand(themeBrand: sobaya.app.sharemodel.ThemeBrand) {
         viewModelScope.launch {
             userDataRepository.setThemeBrand(themeBrand)
         }
     }
 
-    fun updateDarkThemeConfig(darkThemeConfig: DarkThemeConfig) {
+    fun updateDarkThemeConfig(darkThemeConfig: sobaya.app.sharemodel.DarkThemeConfig) {
         viewModelScope.launch {
             userDataRepository.setDarkThemeConfig(darkThemeConfig)
         }
@@ -81,9 +81,9 @@ class SettingsViewModel @Inject constructor(
  * Represents the settings which the user can edit within the app.
  */
 data class UserEditableSettings(
-    val brand: ThemeBrand,
+    val brand: sobaya.app.sharemodel.ThemeBrand,
     val useDynamicColor: Boolean,
-    val darkThemeConfig: DarkThemeConfig,
+    val darkThemeConfig: sobaya.app.sharemodel.DarkThemeConfig,
 )
 
 sealed interface SettingsUiState {

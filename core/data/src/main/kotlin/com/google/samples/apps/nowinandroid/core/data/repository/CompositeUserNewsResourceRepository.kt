@@ -16,8 +16,8 @@
 
 package com.google.samples.apps.nowinandroid.core.data.repository
 
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.mapToUserNewsResources
+import sobaya.app.sharemodel.UserNewsResource
+import sobaya.app.sharemodel.mapToUserNewsResources
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -40,7 +40,7 @@ class CompositeUserNewsResourceRepository @Inject constructor(
      */
     override fun observeAll(
         query: NewsResourceQuery,
-    ): Flow<List<UserNewsResource>> =
+    ): Flow<List<sobaya.app.sharemodel.UserNewsResource>> =
         newsRepository.getNewsResources(query)
             .combine(userDataRepository.userData) { newsResources, userData ->
                 newsResources.mapToUserNewsResources(userData)
@@ -49,7 +49,7 @@ class CompositeUserNewsResourceRepository @Inject constructor(
     /**
      * Returns available news resources (joined with user data) for the followed topics.
      */
-    override fun observeAllForFollowedTopics(): Flow<List<UserNewsResource>> =
+    override fun observeAllForFollowedTopics(): Flow<List<sobaya.app.sharemodel.UserNewsResource>> =
         userDataRepository.userData.map { it.followedTopics }.distinctUntilChanged()
             .flatMapLatest { followedTopics ->
                 when {
@@ -58,7 +58,7 @@ class CompositeUserNewsResourceRepository @Inject constructor(
                 }
             }
 
-    override fun observeAllBookmarked(): Flow<List<UserNewsResource>> =
+    override fun observeAllBookmarked(): Flow<List<sobaya.app.sharemodel.UserNewsResource>> =
         userDataRepository.userData.map { it.bookmarkedNewsResources }.distinctUntilChanged()
             .flatMapLatest { bookmarkedNewsResources ->
                 when {

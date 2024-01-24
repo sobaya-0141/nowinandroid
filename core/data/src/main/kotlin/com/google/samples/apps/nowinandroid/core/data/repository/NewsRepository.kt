@@ -17,7 +17,7 @@
 package com.google.samples.apps.nowinandroid.core.data.repository
 
 import com.google.samples.apps.nowinandroid.core.data.Syncable
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
+import sobaya.app.sharemodel.NewsResource
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -46,5 +46,5 @@ interface NewsRepository : Syncable {
             filterTopicIds = null,
             filterNewsIds = null,
         ),
-    ): Flow<List<NewsResource>>
+    ): Flow<List<sobaya.app.sharemodel.NewsResource>>
 }

@@ -17,20 +17,20 @@
 package com.google.samples.apps.nowinandroid.core.testing.repository
 
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.ThemeBrand
+import sobaya.app.sharemodel.UserData
 import kotlinx.coroutines.channels.BufferOverflow.DROP_OLDEST
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.filterNotNull
 
-val emptyUserData = UserData(
+val emptyUserData = sobaya.app.sharemodel.UserData(
     bookmarkedNewsResources = emptySet(),
     viewedNewsResources = emptySet(),
     followedTopics = emptySet(),
-    themeBrand = ThemeBrand.DEFAULT,
-    darkThemeConfig = DarkThemeConfig.FOLLOW_SYSTEM,
+    themeBrand = sobaya.app.sharemodel.ThemeBrand.DEFAULT,
+    darkThemeConfig = sobaya.app.sharemodel.DarkThemeConfig.FOLLOW_SYSTEM,
     useDynamicColor = false,
     shouldHideOnboarding = false,
 )
@@ -39,11 +39,11 @@ class TestUserDataRepository : UserDataRepository {
     /**
      * The backing hot flow for the list of followed topic ids for testing.
      */
-    private val _userData = MutableSharedFlow<UserData>(replay = 1, onBufferOverflow = DROP_OLDEST)
+    private val _userData = MutableSharedFlow<sobaya.app.sharemodel.UserData>(replay = 1, onBufferOverflow = DROP_OLDEST)
 
     private val currentUserData get() = _userData.replayCache.firstOrNull() ?: emptyUserData
 
-    override val userData: Flow<UserData> = _userData.filterNotNull()
+    override val userData: Flow<sobaya.app.sharemodel.UserData> = _userData.filterNotNull()
 
     override suspend fun setFollowedTopicIds(followedTopicIds: Set<String>) {
         _userData.tryEmit(currentUserData.copy(followedTopics = followedTopicIds))
@@ -88,13 +88,13 @@ class TestUserDataRepository : UserDataRepository {
         }
     }
 
-    override suspend fun setThemeBrand(themeBrand: ThemeBrand) {
+    override suspend fun setThemeBrand(themeBrand: sobaya.app.sharemodel.ThemeBrand) {
         currentUserData.let { current ->
             _userData.tryEmit(current.copy(themeBrand = themeBrand))
         }
     }
 
-    override suspend fun setDarkThemeConfig(darkThemeConfig: DarkThemeConfig) {
+    override suspend fun setDarkThemeConfig(darkThemeConfig: sobaya.app.sharemodel.DarkThemeConfig) {
         currentUserData.let { current ->
             _userData.tryEmit(current.copy(darkThemeConfig = darkThemeConfig))
         }
@@ -115,7 +115,7 @@ class TestUserDataRepository : UserDataRepository {
     /**
      * A test-only API to allow setting of user data directly.
      */
-    fun setUserData(userData: UserData) {
+    fun setUserData(userData: sobaya.app.sharemodel.UserData) {
         _userData.tryEmit(userData)
     }
 }

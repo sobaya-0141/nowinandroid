@@ -25,7 +25,7 @@ android {
 
 dependencies {
     implementation(projects.core.data)
-    implementation(projects.core.model)
+    implementation(projects.core.shareModel)
     implementation(libs.hilt.android)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.datetime)

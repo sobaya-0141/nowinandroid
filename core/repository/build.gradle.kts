@@ -19,6 +19,7 @@ plugins {
     id("com.android.library")
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktorfit)
+    id("kotlinx-serialization")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -46,7 +47,11 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                //put your multiplatform dependencies here
+                implementation(projects.core.shareModel)
+
+                implementation(libs.kotlinx.datetime)
+                implementation(libs.kotlinx.serialization.json)
+                implementation(projects.core.shareModel)
             }
         }
         val commonTest by getting {

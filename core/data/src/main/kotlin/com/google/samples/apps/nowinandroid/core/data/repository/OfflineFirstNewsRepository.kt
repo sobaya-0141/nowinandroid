@@ -28,7 +28,7 @@ import com.google.samples.apps.nowinandroid.core.database.model.TopicEntity
 import com.google.samples.apps.nowinandroid.core.database.model.asExternalModel
 import com.google.samples.apps.nowinandroid.core.datastore.ChangeListVersions
 import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
+import sobaya.app.sharemodel.NewsResource
 import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
 import com.google.samples.apps.nowinandroid.core.network.model.NetworkNewsResource
 import com.google.samples.apps.nowinandroid.core.notifications.Notifier
@@ -55,7 +55,7 @@ class OfflineFirstNewsRepository @Inject constructor(
 
     override fun getNewsResources(
         query: NewsResourceQuery,
-    ): Flow<List<NewsResource>> = newsResourceDao.getNewsResources(
+    ): Flow<List<sobaya.app.sharemodel.NewsResource>> = newsResourceDao.getNewsResources(
         useFilterTopicIds = query.filterTopicIds != null,
         filterTopicIds = query.filterTopicIds ?: emptySet(),
         useFilterNewsIds = query.filterNewsIds != null,

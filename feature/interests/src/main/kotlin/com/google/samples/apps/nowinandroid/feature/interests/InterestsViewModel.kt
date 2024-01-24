@@ -21,7 +21,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
 import com.google.samples.apps.nowinandroid.core.domain.GetFollowableTopicsUseCase
 import com.google.samples.apps.nowinandroid.core.domain.TopicSortField
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
+import sobaya.app.sharemodel.FollowableTopic
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -56,7 +56,7 @@ sealed interface InterestsUiState {
     data object Loading : InterestsUiState
 
     data class Interests(
-        val topics: List<FollowableTopic>,
+        val topics: List<sobaya.app.sharemodel.FollowableTopic>,
     ) : InterestsUiState
 
     data object Empty : InterestsUiState

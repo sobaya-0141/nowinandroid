@@ -40,7 +40,7 @@ secrets {
 
 dependencies {
     implementation(projects.core.common)
-    implementation(projects.core.model)
+    implementation(projects.core.shareModel)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)
     implementation(libs.kotlinx.coroutines.android)

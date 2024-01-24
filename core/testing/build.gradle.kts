@@ -44,7 +44,7 @@ dependencies {
     implementation(projects.core.data)
     implementation(projects.core.designsystem)
     implementation(projects.core.domain)
-    implementation(projects.core.model)
+    implementation(projects.core.shareModel)
     implementation(projects.core.notifications)
     implementation(projects.core.analytics)
     implementation(libs.kotlinx.datetime)

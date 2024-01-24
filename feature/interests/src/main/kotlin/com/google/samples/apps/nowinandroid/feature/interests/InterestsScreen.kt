@@ -29,7 +29,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaBackground
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaLoadingWheel
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
+import sobaya.app.sharemodel.FollowableTopic
 import com.google.samples.apps.nowinandroid.core.ui.DevicePreviews
 import com.google.samples.apps.nowinandroid.core.ui.FollowableTopicPreviewParameterProvider
 import com.google.samples.apps.nowinandroid.core.ui.TrackScreenViewEvent
@@ -89,7 +89,7 @@ private fun InterestsEmptyScreen() {
 @Composable
 fun InterestsScreenPopulated(
     @PreviewParameter(FollowableTopicPreviewParameterProvider::class)
-    followableTopics: List<FollowableTopic>,
+    followableTopics: List<sobaya.app.sharemodel.FollowableTopic>,
 ) {
     NiaTheme {
         NiaBackground {

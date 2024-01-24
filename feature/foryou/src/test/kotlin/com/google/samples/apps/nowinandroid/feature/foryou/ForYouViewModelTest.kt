@@ -21,11 +21,11 @@ import com.google.samples.apps.nowinandroid.core.analytics.AnalyticsEvent
 import com.google.samples.apps.nowinandroid.core.analytics.AnalyticsEvent.Param
 import com.google.samples.apps.nowinandroid.core.data.repository.CompositeUserNewsResourceRepository
 import com.google.samples.apps.nowinandroid.core.domain.GetFollowableTopicsUseCase
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.mapToUserNewsResources
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.NewsResource
+import sobaya.app.sharemodel.Topic
+import sobaya.app.sharemodel.UserNewsResource
+import sobaya.app.sharemodel.mapToUserNewsResources
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestNewsRepository
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestTopicsRepository
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestUserDataRepository
@@ -157,8 +157,8 @@ class ForYouViewModelTest {
         assertEquals(
             OnboardingUiState.Shown(
                 topics = listOf(
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "0",
                             name = "Headlines",
                             shortDescription = "",
@@ -168,8 +168,8 @@ class ForYouViewModelTest {
                         ),
                         isFollowed = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "1",
                             name = "UI",
                             shortDescription = "",
@@ -179,8 +179,8 @@ class ForYouViewModelTest {
                         ),
                         isFollowed = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "2",
                             name = "Tools",
                             shortDescription = "",
@@ -218,8 +218,8 @@ class ForYouViewModelTest {
         assertEquals(
             OnboardingUiState.Shown(
                 topics = listOf(
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "0",
                             name = "Headlines",
                             shortDescription = "",
@@ -229,8 +229,8 @@ class ForYouViewModelTest {
                         ),
                         isFollowed = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "1",
                             name = "UI",
                             shortDescription = "",
@@ -240,8 +240,8 @@ class ForYouViewModelTest {
                         ),
                         isFollowed = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "2",
                             name = "Tools",
                             shortDescription = "",
@@ -315,7 +315,7 @@ class ForYouViewModelTest {
         assertEquals(
             OnboardingUiState.Shown(
                 topics = sampleTopics.map {
-                    FollowableTopic(it, false)
+                    sobaya.app.sharemodel.FollowableTopic(it, false)
                 },
             ),
             viewModel.onboardingUiState.value,
@@ -333,7 +333,7 @@ class ForYouViewModelTest {
         assertEquals(
             OnboardingUiState.Shown(
                 topics = sampleTopics.map {
-                    FollowableTopic(it, it.id == followedTopicId)
+                    sobaya.app.sharemodel.FollowableTopic(it, it.id == followedTopicId)
                 },
             ),
             viewModel.onboardingUiState.value,
@@ -344,8 +344,8 @@ class ForYouViewModelTest {
         assertEquals(
             NewsFeedUiState.Success(
                 feed = listOf(
-                    UserNewsResource(sampleNewsResources[1], userData),
-                    UserNewsResource(sampleNewsResources[2], userData),
+                    sobaya.app.sharemodel.UserNewsResource(sampleNewsResources[1], userData),
+                    sobaya.app.sharemodel.UserNewsResource(sampleNewsResources[2], userData),
                 ),
             ),
             viewModel.feedState.value,
@@ -371,8 +371,8 @@ class ForYouViewModelTest {
         assertEquals(
             OnboardingUiState.Shown(
                 topics = listOf(
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "0",
                             name = "Headlines",
                             shortDescription = "",
@@ -382,8 +382,8 @@ class ForYouViewModelTest {
                         ),
                         isFollowed = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "1",
                             name = "UI",
                             shortDescription = "",
@@ -393,8 +393,8 @@ class ForYouViewModelTest {
                         ),
                         isFollowed = false,
                     ),
-                    FollowableTopic(
-                        topic = Topic(
+                    sobaya.app.sharemodel.FollowableTopic(
+                        topic = sobaya.app.sharemodel.Topic(
                             id = "2",
                             name = "Tools",
                             shortDescription = "",
@@ -452,8 +452,14 @@ class ForYouViewModelTest {
         assertEquals(
             NewsFeedUiState.Success(
                 feed = listOf(
-                    UserNewsResource(newsResource = sampleNewsResources[1], userDataExpected),
-                    UserNewsResource(newsResource = sampleNewsResources[2], userDataExpected),
+                    sobaya.app.sharemodel.UserNewsResource(
+                        newsResource = sampleNewsResources[1],
+                        userDataExpected
+                    ),
+                    sobaya.app.sharemodel.UserNewsResource(
+                        newsResource = sampleNewsResources[2],
+                        userDataExpected
+                    ),
                 ),
             ),
             viewModel.feedState.value,
@@ -473,7 +479,7 @@ class ForYouViewModelTest {
         savedStateHandle[LINKED_NEWS_RESOURCE_ID] = sampleNewsResources.first().id
 
         assertEquals(
-            expected = UserNewsResource(
+            expected = sobaya.app.sharemodel.UserNewsResource(
                 newsResource = sampleNewsResources.first(),
                 userData = emptyUserData,
             ),
@@ -507,7 +513,7 @@ class ForYouViewModelTest {
 }
 
 private val sampleTopics = listOf(
-    Topic(
+    sobaya.app.sharemodel.Topic(
         id = "0",
         name = "Headlines",
         shortDescription = "",
@@ -515,7 +521,7 @@ private val sampleTopics = listOf(
         url = "URL",
         imageUrl = "image URL",
     ),
-    Topic(
+    sobaya.app.sharemodel.Topic(
         id = "1",
         name = "UI",
         shortDescription = "",
@@ -523,7 +529,7 @@ private val sampleTopics = listOf(
         url = "URL",
         imageUrl = "image URL",
     ),
-    Topic(
+    sobaya.app.sharemodel.Topic(
         id = "2",
         name = "Tools",
         shortDescription = "",
@@ -534,7 +540,7 @@ private val sampleTopics = listOf(
 )
 
 private val sampleNewsResources = listOf(
-    NewsResource(
+    sobaya.app.sharemodel.NewsResource(
         id = "1",
         title = "Thanks for helping us reach 1M YouTube Subscribers",
         content = "Thank you everyone for following the Now in Android series and everything the " +
@@ -546,7 +552,7 @@ private val sampleNewsResources = listOf(
         publishDate = Instant.parse("2021-11-09T00:00:00.000Z"),
         type = "Video 📺",
         topics = listOf(
-            Topic(
+            sobaya.app.sharemodel.Topic(
                 id = "0",
                 name = "Headlines",
                 shortDescription = "",
@@ -556,7 +562,7 @@ private val sampleNewsResources = listOf(
             ),
         ),
     ),
-    NewsResource(
+    sobaya.app.sharemodel.NewsResource(
         id = "2",
         title = "Transformations and customisations in the Paging Library",
         content = "A demonstration of different operations that can be performed with Paging. " +
@@ -567,7 +573,7 @@ private val sampleNewsResources = listOf(
         publishDate = Instant.parse("2021-11-01T00:00:00.000Z"),
         type = "Video 📺",
         topics = listOf(
-            Topic(
+            sobaya.app.sharemodel.Topic(
                 id = "1",
                 name = "UI",
                 shortDescription = "",
@@ -577,7 +583,7 @@ private val sampleNewsResources = listOf(
             ),
         ),
     ),
-    NewsResource(
+    sobaya.app.sharemodel.NewsResource(
         id = "3",
         title = "Community tip on Paging",
         content = "Tips for using the Paging library from the developer community",
@@ -586,7 +592,7 @@ private val sampleNewsResources = listOf(
         publishDate = Instant.parse("2021-11-08T00:00:00.000Z"),
         type = "Video 📺",
         topics = listOf(
-            Topic(
+            sobaya.app.sharemodel.Topic(
                 id = "1",
                 name = "UI",
                 shortDescription = "",

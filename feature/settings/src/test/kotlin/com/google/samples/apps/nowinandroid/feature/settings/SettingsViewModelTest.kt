@@ -16,8 +16,8 @@
 
 package com.google.samples.apps.nowinandroid.feature.settings
 
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig.DARK
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand.ANDROID
+import sobaya.app.sharemodel.DarkThemeConfig.DARK
+import sobaya.app.sharemodel.ThemeBrand.ANDROID
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestUserDataRepository
 import com.google.samples.apps.nowinandroid.core.testing.util.MainDispatcherRule
 import com.google.samples.apps.nowinandroid.feature.settings.SettingsUiState.Loading

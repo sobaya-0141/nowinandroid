@@ -36,7 +36,7 @@ import androidx.test.espresso.NoActivityResumedException
 import com.google.samples.apps.nowinandroid.MainActivity
 import com.google.samples.apps.nowinandroid.R
 import com.google.samples.apps.nowinandroid.core.data.repository.TopicsRepository
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.Topic
 import com.google.samples.apps.nowinandroid.core.rules.GrantPostNotificationsPermissionRule
 import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -270,7 +270,7 @@ class NavigationTest {
             onNodeWithText(interests).performClick()
 
             // Select the last topic
-            val topic = topicsRepository.getTopics().first().sortedBy(Topic::name).last().name
+            val topic = topicsRepository.getTopics().first().sortedBy(sobaya.app.sharemodel.Topic::name).last().name
             onNodeWithTag("interests:topics").performScrollToNode(hasText(topic))
             onNodeWithText(topic).performClick()
 

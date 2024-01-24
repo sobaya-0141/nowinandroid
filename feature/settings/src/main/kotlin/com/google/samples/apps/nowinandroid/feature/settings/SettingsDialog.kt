@@ -57,13 +57,13 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.samples.apps.nowinandroid.core.designsystem.component.NiaTextButton
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.supportsDynamicTheming
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig.DARK
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig.FOLLOW_SYSTEM
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig.LIGHT
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand.ANDROID
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand.DEFAULT
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.DarkThemeConfig.DARK
+import sobaya.app.sharemodel.DarkThemeConfig.FOLLOW_SYSTEM
+import sobaya.app.sharemodel.DarkThemeConfig.LIGHT
+import sobaya.app.sharemodel.ThemeBrand
+import sobaya.app.sharemodel.ThemeBrand.ANDROID
+import sobaya.app.sharemodel.ThemeBrand.DEFAULT
 import com.google.samples.apps.nowinandroid.core.ui.TrackScreenViewEvent
 import com.google.samples.apps.nowinandroid.feature.settings.R.string
 import com.google.samples.apps.nowinandroid.feature.settings.SettingsUiState.Loading
@@ -89,9 +89,9 @@ fun SettingsDialog(
     settingsUiState: SettingsUiState,
     supportDynamicColor: Boolean = supportsDynamicTheming(),
     onDismiss: () -> Unit,
-    onChangeThemeBrand: (themeBrand: ThemeBrand) -> Unit,
+    onChangeThemeBrand: (themeBrand: sobaya.app.sharemodel.ThemeBrand) -> Unit,
     onChangeDynamicColorPreference: (useDynamicColor: Boolean) -> Unit,
-    onChangeDarkThemeConfig: (darkThemeConfig: DarkThemeConfig) -> Unit,
+    onChangeDarkThemeConfig: (darkThemeConfig: sobaya.app.sharemodel.DarkThemeConfig) -> Unit,
 ) {
     val configuration = LocalConfiguration.current
 
@@ -156,9 +156,9 @@ fun SettingsDialog(
 private fun ColumnScope.SettingsPanel(
     settings: UserEditableSettings,
     supportDynamicColor: Boolean,
-    onChangeThemeBrand: (themeBrand: ThemeBrand) -> Unit,
+    onChangeThemeBrand: (themeBrand: sobaya.app.sharemodel.ThemeBrand) -> Unit,
     onChangeDynamicColorPreference: (useDynamicColor: Boolean) -> Unit,
-    onChangeDarkThemeConfig: (darkThemeConfig: DarkThemeConfig) -> Unit,
+    onChangeDarkThemeConfig: (darkThemeConfig: sobaya.app.sharemodel.DarkThemeConfig) -> Unit,
 ) {
     SettingsDialogSectionTitle(text = stringResource(string.theme))
     Column(Modifier.selectableGroup()) {

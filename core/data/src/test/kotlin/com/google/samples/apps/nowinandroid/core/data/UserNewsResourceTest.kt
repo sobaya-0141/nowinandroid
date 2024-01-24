@@ -16,14 +16,14 @@
 
 package com.google.samples.apps.nowinandroid.core.data
 
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig.FOLLOW_SYSTEM
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand.DEFAULT
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
-import kotlinx.datetime.Clock
+import sobaya.app.sharemodel.DarkThemeConfig.FOLLOW_SYSTEM
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.NewsResource
+import sobaya.app.sharemodel.ThemeBrand.DEFAULT
+import sobaya.app.sharemodel.Topic
+import sobaya.app.sharemodel.UserData
+import sobaya.app.sharemodel.UserNewsResource
+import kotlinx.datetime.Clock.System
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -37,16 +37,16 @@ class UserNewsResourceTest {
      */
     @Test
     fun userNewsResourcesAreConstructedFromNewsResourcesAndUserData() {
-        val newsResource1 = NewsResource(
+        val newsResource1 = sobaya.app.sharemodel.NewsResource(
             id = "N1",
             title = "Test news title",
             content = "Test news content",
             url = "Test URL",
             headerImageUrl = "Test image URL",
-            publishDate = Clock.System.now(),
+            publishDate = System.now(),
             type = "Article 📚",
             topics = listOf(
-                Topic(
+                sobaya.app.sharemodel.Topic(
                     id = "T1",
                     name = "Topic 1",
                     shortDescription = "Topic 1 short description",
@@ -54,7 +54,7 @@ class UserNewsResourceTest {
                     url = "Topic 1 URL",
                     imageUrl = "Topic 1 image URL",
                 ),
-                Topic(
+                sobaya.app.sharemodel.Topic(
                     id = "T2",
                     name = "Topic 2",
                     shortDescription = "Topic 2 short description",
@@ -65,7 +65,7 @@ class UserNewsResourceTest {
             ),
         )
 
-        val userData = UserData(
+        val userData = sobaya.app.sharemodel.UserData(
             bookmarkedNewsResources = setOf("N1"),
             viewedNewsResources = setOf("N1"),
             followedTopics = setOf("T1"),
@@ -75,7 +75,7 @@ class UserNewsResourceTest {
             shouldHideOnboarding = true,
         )
 
-        val userNewsResource = UserNewsResource(newsResource1, userData)
+        val userNewsResource = sobaya.app.sharemodel.UserNewsResource(newsResource1, userData)
 
         // Check that the simple field mappings have been done correctly.
         assertEquals(newsResource1.id, userNewsResource.id)
@@ -89,7 +89,7 @@ class UserNewsResourceTest {
         assertEquals(newsResource1.topics.size, userNewsResource.followableTopics.size)
         for (topic in newsResource1.topics) {
             // Construct the expected FollowableTopic.
-            val followableTopic = FollowableTopic(
+            val followableTopic = sobaya.app.sharemodel.FollowableTopic(
                 topic = topic,
                 isFollowed = userData.followedTopics.contains(topic.id),
             )

@@ -17,20 +17,20 @@
 package com.google.samples.apps.nowinandroid.core.ui
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.Topic
 
 /* ktlint-disable max-line-length */
 /**
  * This [PreviewParameterProvider](https://developer.android.com/reference/kotlin/androidx/compose/ui/tooling/preview/PreviewParameterProvider)
  * provides list of [FollowableTopic] for Composable previews.
  */
-class FollowableTopicPreviewParameterProvider : PreviewParameterProvider<List<FollowableTopic>> {
-    override val values: Sequence<List<FollowableTopic>>
+class FollowableTopicPreviewParameterProvider : PreviewParameterProvider<List<sobaya.app.sharemodel.FollowableTopic>> {
+    override val values: Sequence<List<sobaya.app.sharemodel.FollowableTopic>>
         get() = sequenceOf(
             listOf(
-                FollowableTopic(
-                    topic = Topic(
+                sobaya.app.sharemodel.FollowableTopic(
+                    topic = sobaya.app.sharemodel.Topic(
                         id = "2",
                         name = "Headlines",
                         shortDescription = "News we want everyone to see",
@@ -40,8 +40,8 @@ class FollowableTopicPreviewParameterProvider : PreviewParameterProvider<List<Fo
                     ),
                     isFollowed = false,
                 ),
-                FollowableTopic(
-                    topic = Topic(
+                sobaya.app.sharemodel.FollowableTopic(
+                    topic = sobaya.app.sharemodel.Topic(
                         id = "3",
                         name = "UI",
                         shortDescription = "Material Design, Navigation, Text, Paging, Accessibility (a11y), Internationalization (i18n), Localization (l10n), Animations, Large Screens, Widgets",
@@ -51,8 +51,8 @@ class FollowableTopicPreviewParameterProvider : PreviewParameterProvider<List<Fo
                     ),
                     isFollowed = true,
                 ),
-                FollowableTopic(
-                    topic = Topic(
+                sobaya.app.sharemodel.FollowableTopic(
+                    topic = sobaya.app.sharemodel.Topic(
                         id = "4",
                         name = "Testing",
                         shortDescription = "CI, Espresso, TestLab, etc",

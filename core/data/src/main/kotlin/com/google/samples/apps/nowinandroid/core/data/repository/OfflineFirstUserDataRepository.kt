@@ -19,9 +19,9 @@ package com.google.samples.apps.nowinandroid.core.data.repository
 import androidx.annotation.VisibleForTesting
 import com.google.samples.apps.nowinandroid.core.analytics.AnalyticsHelper
 import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.ThemeBrand
+import sobaya.app.sharemodel.UserData
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class OfflineFirstUserDataRepository @Inject constructor(
     private val analyticsHelper: AnalyticsHelper,
 ) : UserDataRepository {
 
-    override val userData: Flow<UserData> =
+    override val userData: Flow<sobaya.app.sharemodel.UserData> =
         niaPreferencesDataSource.userData
 
     @VisibleForTesting
@@ -53,12 +53,12 @@ class OfflineFirstUserDataRepository @Inject constructor(
     override suspend fun setNewsResourceViewed(newsResourceId: String, viewed: Boolean) =
         niaPreferencesDataSource.setNewsResourceViewed(newsResourceId, viewed)
 
-    override suspend fun setThemeBrand(themeBrand: ThemeBrand) {
+    override suspend fun setThemeBrand(themeBrand: sobaya.app.sharemodel.ThemeBrand) {
         niaPreferencesDataSource.setThemeBrand(themeBrand)
         analyticsHelper.logThemeChanged(themeBrand.name)
     }
 
-    override suspend fun setDarkThemeConfig(darkThemeConfig: DarkThemeConfig) {
+    override suspend fun setDarkThemeConfig(darkThemeConfig: sobaya.app.sharemodel.DarkThemeConfig) {
         niaPreferencesDataSource.setDarkThemeConfig(darkThemeConfig)
         analyticsHelper.logDarkThemeConfigChanged(darkThemeConfig.name)
     }

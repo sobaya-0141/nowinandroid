@@ -19,7 +19,7 @@ package com.google.samples.apps.nowinandroid.core.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.Topic
 
 /**
  * Defines a topic a user may follow.
@@ -41,7 +41,7 @@ data class TopicEntity(
     val imageUrl: String,
 )
 
-fun TopicEntity.asExternalModel() = Topic(
+fun TopicEntity.asExternalModel() = sobaya.app.sharemodel.Topic(
     id = id,
     name = name,
     shortDescription = shortDescription,

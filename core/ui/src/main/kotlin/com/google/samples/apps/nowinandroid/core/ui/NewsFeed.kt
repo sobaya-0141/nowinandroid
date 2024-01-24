@@ -42,7 +42,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.google.samples.apps.nowinandroid.core.analytics.LocalAnalyticsHelper
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.UserNewsResource
 
 /**
  * An extension on [LazyListScope] defining a feed with news resources.
@@ -125,7 +125,7 @@ sealed interface NewsFeedUiState {
         /**
          * The list of news resources contained in this feed.
          */
-        val feed: List<UserNewsResource>,
+        val feed: List<sobaya.app.sharemodel.UserNewsResource>,
     ) : NewsFeedUiState
 }
 
@@ -149,7 +149,7 @@ private fun NewsFeedLoadingPreview() {
 @Composable
 private fun NewsFeedContentPreview(
     @PreviewParameter(UserNewsResourcePreviewParameterProvider::class)
-    userNewsResources: List<UserNewsResource>,
+    userNewsResources: List<sobaya.app.sharemodel.UserNewsResource>,
 ) {
     NiaTheme {
         LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Adaptive(300.dp)) {

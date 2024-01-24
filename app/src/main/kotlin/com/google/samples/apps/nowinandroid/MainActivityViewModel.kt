@@ -21,7 +21,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.nowinandroid.MainActivityUiState.Loading
 import com.google.samples.apps.nowinandroid.MainActivityUiState.Success
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
+import sobaya.app.sharemodel.UserData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -44,5 +44,5 @@ class MainActivityViewModel @Inject constructor(
 
 sealed interface MainActivityUiState {
     data object Loading : MainActivityUiState
-    data class Success(val userData: UserData) : MainActivityUiState
+    data class Success(val userData: sobaya.app.sharemodel.UserData) : MainActivityUiState
 }

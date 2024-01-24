@@ -17,8 +17,8 @@
 package com.google.samples.apps.nowinandroid.interests
 
 import com.google.samples.apps.nowinandroid.core.domain.GetFollowableTopicsUseCase
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.Topic
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestTopicsRepository
 import com.google.samples.apps.nowinandroid.core.testing.repository.TestUserDataRepository
 import com.google.samples.apps.nowinandroid.core.testing.util.MainDispatcherRule
@@ -140,8 +140,8 @@ private const val TOPIC_URL = "URL"
 private const val TOPIC_IMAGE_URL = "Image URL"
 
 private val testInputTopics = listOf(
-    FollowableTopic(
-        Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        sobaya.app.sharemodel.Topic(
             id = "0",
             name = TOPIC_1_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -151,8 +151,8 @@ private val testInputTopics = listOf(
         ),
         isFollowed = true,
     ),
-    FollowableTopic(
-        Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        sobaya.app.sharemodel.Topic(
             id = "1",
             name = TOPIC_2_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -162,8 +162,8 @@ private val testInputTopics = listOf(
         ),
         isFollowed = false,
     ),
-    FollowableTopic(
-        Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        sobaya.app.sharemodel.Topic(
             id = "2",
             name = TOPIC_3_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -176,8 +176,8 @@ private val testInputTopics = listOf(
 )
 
 private val testOutputTopics = listOf(
-    FollowableTopic(
-        Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        sobaya.app.sharemodel.Topic(
             id = "0",
             name = TOPIC_1_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -187,8 +187,8 @@ private val testOutputTopics = listOf(
         ),
         isFollowed = true,
     ),
-    FollowableTopic(
-        Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        sobaya.app.sharemodel.Topic(
             id = "1",
             name = TOPIC_2_NAME,
             shortDescription = TOPIC_SHORT_DESC,
@@ -198,8 +198,8 @@ private val testOutputTopics = listOf(
         ),
         isFollowed = true,
     ),
-    FollowableTopic(
-        Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        sobaya.app.sharemodel.Topic(
             id = "2",
             name = TOPIC_3_NAME,
             shortDescription = TOPIC_SHORT_DESC,

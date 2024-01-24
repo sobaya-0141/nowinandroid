@@ -17,22 +17,22 @@
 package com.google.samples.apps.nowinandroid.core.testing.repository
 
 import com.google.samples.apps.nowinandroid.core.data.repository.SearchContentsRepository
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.SearchResult
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.NewsResource
+import sobaya.app.sharemodel.SearchResult
+import sobaya.app.sharemodel.Topic
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
 class TestSearchContentsRepository : SearchContentsRepository {
 
-    private val cachedTopics: MutableList<Topic> = mutableListOf()
-    private val cachedNewsResources: MutableList<NewsResource> = mutableListOf()
+    private val cachedTopics: MutableList<sobaya.app.sharemodel.Topic> = mutableListOf()
+    private val cachedNewsResources: MutableList<sobaya.app.sharemodel.NewsResource> = mutableListOf()
 
     override suspend fun populateFtsData() { /* no-op */ }
 
-    override fun searchContents(searchQuery: String): Flow<SearchResult> = flowOf(
-        SearchResult(
+    override fun searchContents(searchQuery: String): Flow<sobaya.app.sharemodel.SearchResult> = flowOf(
+        sobaya.app.sharemodel.SearchResult(
             topics = cachedTopics.filter {
                 it.name.contains(searchQuery) ||
                     it.shortDescription.contains(searchQuery) ||
@@ -52,14 +52,14 @@ class TestSearchContentsRepository : SearchContentsRepository {
     /**
      * Test only method to add the topics to the stored list in memory
      */
-    fun addTopics(topics: List<Topic>) {
+    fun addTopics(topics: List<sobaya.app.sharemodel.Topic>) {
         cachedTopics.addAll(topics)
     }
 
     /**
      * Test only method to add the news resources to the stored list in memory
      */
-    fun addNewsResources(newsResources: List<NewsResource>) {
+    fun addNewsResources(newsResources: List<sobaya.app.sharemodel.NewsResource>) {
         cachedNewsResources.addAll(newsResources)
     }
 }

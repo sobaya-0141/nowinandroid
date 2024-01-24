@@ -20,9 +20,9 @@ import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig.DARK
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand.ANDROID
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand.DEFAULT
+import sobaya.app.sharemodel.DarkThemeConfig.DARK
+import sobaya.app.sharemodel.ThemeBrand.ANDROID
+import sobaya.app.sharemodel.ThemeBrand.DEFAULT
 import com.google.samples.apps.nowinandroid.feature.settings.SettingsUiState.Loading
 import com.google.samples.apps.nowinandroid.feature.settings.SettingsUiState.Success
 import org.junit.Rule

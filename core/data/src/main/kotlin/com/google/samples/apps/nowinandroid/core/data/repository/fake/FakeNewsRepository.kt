@@ -22,7 +22,7 @@ import com.google.samples.apps.nowinandroid.core.data.repository.NewsRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.NewsResourceQuery
 import com.google.samples.apps.nowinandroid.core.database.model.NewsResourceEntity
 import com.google.samples.apps.nowinandroid.core.database.model.asExternalModel
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
+import sobaya.app.sharemodel.NewsResource
 import com.google.samples.apps.nowinandroid.core.network.Dispatcher
 import com.google.samples.apps.nowinandroid.core.network.NiaDispatchers.IO
 import com.google.samples.apps.nowinandroid.core.network.fake.FakeNiaNetworkDataSource
@@ -46,7 +46,7 @@ class FakeNewsRepository @Inject constructor(
 
     override fun getNewsResources(
         query: NewsResourceQuery,
-    ): Flow<List<NewsResource>> =
+    ): Flow<List<sobaya.app.sharemodel.NewsResource>> =
         flow {
             emit(
                 datasource

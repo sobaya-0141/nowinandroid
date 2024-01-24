@@ -16,29 +16,29 @@
 
 package com.google.samples.apps.nowinandroid.core.testing.data
 
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.NewsResource
+import sobaya.app.sharemodel.ThemeBrand
+import sobaya.app.sharemodel.UserData
+import sobaya.app.sharemodel.UserNewsResource
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 
 /* ktlint-disable max-line-length */
-val userNewsResourcesTestData: List<UserNewsResource> = UserData(
+val userNewsResourcesTestData: List<sobaya.app.sharemodel.UserNewsResource> = sobaya.app.sharemodel.UserData(
     bookmarkedNewsResources = setOf("1", "4"),
     viewedNewsResources = setOf("1", "2", "4"),
     followedTopics = emptySet(),
-    themeBrand = ThemeBrand.ANDROID,
-    darkThemeConfig = DarkThemeConfig.DARK,
+    themeBrand = sobaya.app.sharemodel.ThemeBrand.ANDROID,
+    darkThemeConfig = sobaya.app.sharemodel.DarkThemeConfig.DARK,
     shouldHideOnboarding = true,
     useDynamicColor = false,
 ).let { userData ->
     listOf(
-        UserNewsResource(
-            newsResource = NewsResource(
+        sobaya.app.sharemodel.UserNewsResource(
+            newsResource = sobaya.app.sharemodel.NewsResource(
                 id = "1",
                 title = "Android Basics with Compose",
                 content = "We released the first two units of Android Basics with Compose, our first free course that teaches Android Development with Jetpack Compose to anyone; you do not need any prior programming experience other than basic computer literacy to get started. You’ll learn the fundamentals of programming in Kotlin while building Android apps using Jetpack Compose, Android’s modern toolkit that simplifies and accelerates native UI development. These two units are just the beginning; more will be coming soon. Check out Android Basics with Compose to get started on your Android development journey",
@@ -58,8 +58,8 @@ val userNewsResourcesTestData: List<UserNewsResource> = UserData(
             ),
             userData = userData,
         ),
-        UserNewsResource(
-            newsResource = NewsResource(
+        sobaya.app.sharemodel.UserNewsResource(
+            newsResource = sobaya.app.sharemodel.NewsResource(
                 id = "2",
                 title = "Thanks for helping us reach 1M YouTube Subscribers",
                 content = "Thank you everyone for following the Now in Android series and everything the " +
@@ -74,8 +74,8 @@ val userNewsResourcesTestData: List<UserNewsResource> = UserData(
             ),
             userData = userData,
         ),
-        UserNewsResource(
-            newsResource = NewsResource(
+        sobaya.app.sharemodel.UserNewsResource(
+            newsResource = sobaya.app.sharemodel.NewsResource(
                 id = "3",
                 title = "Transformations and customisations in the Paging Library",
                 content = "A demonstration of different operations that can be performed " +
@@ -90,8 +90,8 @@ val userNewsResourcesTestData: List<UserNewsResource> = UserData(
             ),
             userData = userData,
         ),
-        UserNewsResource(
-            newsResource = NewsResource(
+        sobaya.app.sharemodel.UserNewsResource(
+            newsResource = sobaya.app.sharemodel.NewsResource(
                 id = "4",
                 title = "New Jetpack Release",
                 content = "New Jetpack release includes updates to libraries such as CameraX, Benchmark, and" +

@@ -16,7 +16,7 @@
 
 package com.google.samples.apps.nowinandroid.core.data.repository
 
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.UserNewsResource
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -31,15 +31,15 @@ interface UserNewsResourceRepository {
             filterTopicIds = null,
             filterNewsIds = null,
         ),
-    ): Flow<List<UserNewsResource>>
+    ): Flow<List<sobaya.app.sharemodel.UserNewsResource>>
 
     /**
      * Returns available news resources for the user's followed topics as a stream.
      */
-    fun observeAllForFollowedTopics(): Flow<List<UserNewsResource>>
+    fun observeAllForFollowedTopics(): Flow<List<sobaya.app.sharemodel.UserNewsResource>>
 
     /**
      * Returns the user's bookmarked news resources as a stream.
      */
-    fun observeAllBookmarked(): Flow<List<UserNewsResource>>
+    fun observeAllBookmarked(): Flow<List<sobaya.app.sharemodel.UserNewsResource>>
 }

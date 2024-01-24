@@ -85,8 +85,8 @@ import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollba
 import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollbar.scrollbarState
 import com.google.samples.apps.nowinandroid.core.designsystem.icon.NiaIcons
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.UserNewsResource
 import com.google.samples.apps.nowinandroid.core.ui.DevicePreviews
 import com.google.samples.apps.nowinandroid.core.ui.NewsFeedUiState.Success
 import com.google.samples.apps.nowinandroid.core.ui.R.string
@@ -288,8 +288,8 @@ private fun SearchNotReadyBody() {
 
 @Composable
 private fun SearchResultBody(
-    topics: List<FollowableTopic>,
-    newsResources: List<UserNewsResource>,
+    topics: List<sobaya.app.sharemodel.FollowableTopic>,
+    newsResources: List<sobaya.app.sharemodel.UserNewsResource>,
     onFollowButtonClick: (String, Boolean) -> Unit,
     onNewsResourcesCheckedChanged: (String, Boolean) -> Unit,
     onNewsResourceViewed: (String) -> Unit,

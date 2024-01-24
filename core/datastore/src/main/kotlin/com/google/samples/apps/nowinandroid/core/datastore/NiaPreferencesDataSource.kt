@@ -18,9 +18,17 @@ package com.google.samples.apps.nowinandroid.core.datastore
 
 import android.util.Log
 import androidx.datastore.core.DataStore
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
+import com.google.samples.apps.nowinandroid.core.datastore.DarkThemeConfigProto.DARK_THEME_CONFIG_DARK
+import com.google.samples.apps.nowinandroid.core.datastore.DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM
+import com.google.samples.apps.nowinandroid.core.datastore.DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT
+import com.google.samples.apps.nowinandroid.core.datastore.DarkThemeConfigProto.DARK_THEME_CONFIG_UNSPECIFIED
+import com.google.samples.apps.nowinandroid.core.datastore.ThemeBrandProto.THEME_BRAND_ANDROID
+import com.google.samples.apps.nowinandroid.core.datastore.ThemeBrandProto.THEME_BRAND_DEFAULT
+import com.google.samples.apps.nowinandroid.core.datastore.ThemeBrandProto.THEME_BRAND_UNSPECIFIED
+import com.google.samples.apps.nowinandroid.core.datastore.ThemeBrandProto.UNRECOGNIZED
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.ThemeBrand
+import sobaya.app.sharemodel.UserData
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import java.io.IOException
@@ -31,28 +39,31 @@ class NiaPreferencesDataSource @Inject constructor(
 ) {
     val userData = userPreferences.data
         .map {
-            UserData(
+            sobaya.app.sharemodel.UserData(
                 bookmarkedNewsResources = it.bookmarkedNewsResourceIdsMap.keys,
                 viewedNewsResources = it.viewedNewsResourceIdsMap.keys,
                 followedTopics = it.followedTopicIdsMap.keys,
                 themeBrand = when (it.themeBrand) {
                     null,
-                    ThemeBrandProto.THEME_BRAND_UNSPECIFIED,
-                    ThemeBrandProto.UNRECOGNIZED,
-                    ThemeBrandProto.THEME_BRAND_DEFAULT,
-                    -> ThemeBrand.DEFAULT
-                    ThemeBrandProto.THEME_BRAND_ANDROID -> ThemeBrand.ANDROID
+                    THEME_BRAND_UNSPECIFIED,
+                    UNRECOGNIZED,
+                    THEME_BRAND_DEFAULT,
+                    -> sobaya.app.sharemodel.ThemeBrand.DEFAULT
+
+                    THEME_BRAND_ANDROID -> sobaya.app.sharemodel.ThemeBrand.ANDROID
                 },
                 darkThemeConfig = when (it.darkThemeConfig) {
                     null,
-                    DarkThemeConfigProto.DARK_THEME_CONFIG_UNSPECIFIED,
+                    DARK_THEME_CONFIG_UNSPECIFIED,
                     DarkThemeConfigProto.UNRECOGNIZED,
-                    DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM,
+                    DARK_THEME_CONFIG_FOLLOW_SYSTEM,
                     ->
-                        DarkThemeConfig.FOLLOW_SYSTEM
-                    DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT ->
-                        DarkThemeConfig.LIGHT
-                    DarkThemeConfigProto.DARK_THEME_CONFIG_DARK -> DarkThemeConfig.DARK
+                        sobaya.app.sharemodel.DarkThemeConfig.FOLLOW_SYSTEM
+
+                    DARK_THEME_CONFIG_LIGHT ->
+                        sobaya.app.sharemodel.DarkThemeConfig.LIGHT
+
+                    DARK_THEME_CONFIG_DARK -> sobaya.app.sharemodel.DarkThemeConfig.DARK
                 },
                 useDynamicColor = it.useDynamicColor,
                 shouldHideOnboarding = it.shouldHideOnboarding,
@@ -90,12 +101,12 @@ class NiaPreferencesDataSource @Inject constructor(
         }
     }
 
-    suspend fun setThemeBrand(themeBrand: ThemeBrand) {
+    suspend fun setThemeBrand(themeBrand: sobaya.app.sharemodel.ThemeBrand) {
         userPreferences.updateData {
             it.copy {
                 this.themeBrand = when (themeBrand) {
-                    ThemeBrand.DEFAULT -> ThemeBrandProto.THEME_BRAND_DEFAULT
-                    ThemeBrand.ANDROID -> ThemeBrandProto.THEME_BRAND_ANDROID
+                    sobaya.app.sharemodel.ThemeBrand.DEFAULT -> ThemeBrandProto.THEME_BRAND_DEFAULT
+                    sobaya.app.sharemodel.ThemeBrand.ANDROID -> ThemeBrandProto.THEME_BRAND_ANDROID
                 }
             }
         }
@@ -109,14 +120,14 @@ class NiaPreferencesDataSource @Inject constructor(
         }
     }
 
-    suspend fun setDarkThemeConfig(darkThemeConfig: DarkThemeConfig) {
+    suspend fun setDarkThemeConfig(darkThemeConfig: sobaya.app.sharemodel.DarkThemeConfig) {
         userPreferences.updateData {
             it.copy {
                 this.darkThemeConfig = when (darkThemeConfig) {
-                    DarkThemeConfig.FOLLOW_SYSTEM ->
+                    sobaya.app.sharemodel.DarkThemeConfig.FOLLOW_SYSTEM ->
                         DarkThemeConfigProto.DARK_THEME_CONFIG_FOLLOW_SYSTEM
-                    DarkThemeConfig.LIGHT -> DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT
-                    DarkThemeConfig.DARK -> DarkThemeConfigProto.DARK_THEME_CONFIG_DARK
+                    sobaya.app.sharemodel.DarkThemeConfig.LIGHT -> DarkThemeConfigProto.DARK_THEME_CONFIG_LIGHT
+                    sobaya.app.sharemodel.DarkThemeConfig.DARK -> DarkThemeConfigProto.DARK_THEME_CONFIG_DARK
                 }
             }
         }

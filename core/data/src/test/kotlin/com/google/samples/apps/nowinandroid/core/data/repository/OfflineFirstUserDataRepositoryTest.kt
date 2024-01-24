@@ -19,9 +19,9 @@ package com.google.samples.apps.nowinandroid.core.data.repository
 import com.google.samples.apps.nowinandroid.core.analytics.NoOpAnalyticsHelper
 import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
 import com.google.samples.apps.nowinandroid.core.datastore.test.testUserPreferencesDataStore
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.ThemeBrand
+import sobaya.app.sharemodel.UserData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.test.TestScope
@@ -64,12 +64,12 @@ class OfflineFirstUserDataRepositoryTest {
     fun offlineFirstUserDataRepository_default_user_data_is_correct() =
         testScope.runTest {
             assertEquals(
-                UserData(
+                sobaya.app.sharemodel.UserData(
                     bookmarkedNewsResources = emptySet(),
                     viewedNewsResources = emptySet(),
                     followedTopics = emptySet(),
-                    themeBrand = ThemeBrand.DEFAULT,
-                    darkThemeConfig = DarkThemeConfig.FOLLOW_SYSTEM,
+                    themeBrand = sobaya.app.sharemodel.ThemeBrand.DEFAULT,
+                    darkThemeConfig = sobaya.app.sharemodel.DarkThemeConfig.FOLLOW_SYSTEM,
                     useDynamicColor = false,
                     shouldHideOnboarding = false,
                 ),
@@ -195,16 +195,16 @@ class OfflineFirstUserDataRepositoryTest {
     @Test
     fun offlineFirstUserDataRepository_set_theme_brand_delegates_to_nia_preferences() =
         testScope.runTest {
-            subject.setThemeBrand(ThemeBrand.ANDROID)
+            subject.setThemeBrand(sobaya.app.sharemodel.ThemeBrand.ANDROID)
 
             assertEquals(
-                ThemeBrand.ANDROID,
+                sobaya.app.sharemodel.ThemeBrand.ANDROID,
                 subject.userData
                     .map { it.themeBrand }
                     .first(),
             )
             assertEquals(
-                ThemeBrand.ANDROID,
+                sobaya.app.sharemodel.ThemeBrand.ANDROID,
                 niaPreferencesDataSource
                     .userData
                     .map { it.themeBrand }
@@ -235,16 +235,16 @@ class OfflineFirstUserDataRepositoryTest {
     @Test
     fun offlineFirstUserDataRepository_set_dark_theme_config_delegates_to_nia_preferences() =
         testScope.runTest {
-            subject.setDarkThemeConfig(DarkThemeConfig.DARK)
+            subject.setDarkThemeConfig(sobaya.app.sharemodel.DarkThemeConfig.DARK)
 
             assertEquals(
-                DarkThemeConfig.DARK,
+                sobaya.app.sharemodel.DarkThemeConfig.DARK,
                 subject.userData
                     .map { it.darkThemeConfig }
                     .first(),
             )
             assertEquals(
-                DarkThemeConfig.DARK,
+                sobaya.app.sharemodel.DarkThemeConfig.DARK,
                 niaPreferencesDataSource
                     .userData
                     .map { it.darkThemeConfig }

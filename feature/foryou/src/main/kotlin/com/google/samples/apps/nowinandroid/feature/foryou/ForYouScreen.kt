@@ -97,7 +97,7 @@ import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollba
 import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollbar.scrollbarState
 import com.google.samples.apps.nowinandroid.core.designsystem.icon.NiaIcons
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.UserNewsResource
 import com.google.samples.apps.nowinandroid.core.ui.DevicePreviews
 import com.google.samples.apps.nowinandroid.core.ui.NewsFeedUiState
 import com.google.samples.apps.nowinandroid.core.ui.TrackScreenViewEvent
@@ -137,7 +137,7 @@ internal fun ForYouScreen(
     isSyncing: Boolean,
     onboardingUiState: OnboardingUiState,
     feedState: NewsFeedUiState,
-    deepLinkedUserNewsResource: UserNewsResource?,
+    deepLinkedUserNewsResource: sobaya.app.sharemodel.UserNewsResource?,
     onTopicCheckedChanged: (String, Boolean) -> Unit,
     onTopicClick: (String) -> Unit,
     onDeepLinkOpened: (String) -> Unit,
@@ -464,7 +464,7 @@ private fun NotificationPermissionEffect() {
 
 @Composable
 private fun DeepLinkEffect(
-    userNewsResource: UserNewsResource?,
+    userNewsResource: sobaya.app.sharemodel.UserNewsResource?,
     onDeepLinkOpened: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -505,7 +505,7 @@ private fun feedItemsSize(
 @Composable
 fun ForYouScreenPopulatedFeed(
     @PreviewParameter(UserNewsResourcePreviewParameterProvider::class)
-    userNewsResources: List<UserNewsResource>,
+    userNewsResources: List<sobaya.app.sharemodel.UserNewsResource>,
 ) {
     BoxWithConstraints {
         NiaTheme {
@@ -531,7 +531,7 @@ fun ForYouScreenPopulatedFeed(
 @Composable
 fun ForYouScreenOfflinePopulatedFeed(
     @PreviewParameter(UserNewsResourcePreviewParameterProvider::class)
-    userNewsResources: List<UserNewsResource>,
+    userNewsResources: List<sobaya.app.sharemodel.UserNewsResource>,
 ) {
     BoxWithConstraints {
         NiaTheme {
@@ -557,7 +557,7 @@ fun ForYouScreenOfflinePopulatedFeed(
 @Composable
 fun ForYouScreenTopicSelection(
     @PreviewParameter(UserNewsResourcePreviewParameterProvider::class)
-    userNewsResources: List<UserNewsResource>,
+    userNewsResources: List<sobaya.app.sharemodel.UserNewsResource>,
 ) {
     BoxWithConstraints {
         NiaTheme {
@@ -607,7 +607,7 @@ fun ForYouScreenLoading() {
 @Composable
 fun ForYouScreenPopulatedAndLoading(
     @PreviewParameter(UserNewsResourcePreviewParameterProvider::class)
-    userNewsResources: List<UserNewsResource>,
+    userNewsResources: List<sobaya.app.sharemodel.UserNewsResource>,
 ) {
     BoxWithConstraints {
         NiaTheme {

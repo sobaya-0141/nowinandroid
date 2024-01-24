@@ -16,13 +16,13 @@
 
 package com.google.samples.apps.nowinandroid.core.testing.data
 
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.Topic
 
 /* ktlint-disable max-line-length */
-val followableTopicTestData: List<FollowableTopic> = listOf(
-    FollowableTopic(
-        topic = Topic(
+val followableTopicTestData: List<sobaya.app.sharemodel.FollowableTopic> = listOf(
+    sobaya.app.sharemodel.FollowableTopic(
+        topic = sobaya.app.sharemodel.Topic(
             id = "2",
             name = "Headlines",
             shortDescription = "News we want everyone to see",
@@ -32,8 +32,8 @@ val followableTopicTestData: List<FollowableTopic> = listOf(
         ),
         isFollowed = false,
     ),
-    FollowableTopic(
-        topic = Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        topic = sobaya.app.sharemodel.Topic(
             id = "3",
             name = "UI",
             shortDescription = "Material Design, Navigation, Text, Paging, Accessibility (a11y), Internationalization (i18n), Localization (l10n), Animations, Large Screens, Widgets",
@@ -43,8 +43,8 @@ val followableTopicTestData: List<FollowableTopic> = listOf(
         ),
         isFollowed = true,
     ),
-    FollowableTopic(
-        topic = Topic(
+    sobaya.app.sharemodel.FollowableTopic(
+        topic = sobaya.app.sharemodel.Topic(
             id = "4",
             name = "Testing",
             shortDescription = "CI, Espresso, TestLab, etc",

@@ -67,7 +67,7 @@ import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollba
 import com.google.samples.apps.nowinandroid.core.designsystem.component.scrollbar.scrollbarState
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.LocalTintTheme
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.UserNewsResource
 import com.google.samples.apps.nowinandroid.core.ui.NewsFeedUiState
 import com.google.samples.apps.nowinandroid.core.ui.NewsFeedUiState.Loading
 import com.google.samples.apps.nowinandroid.core.ui.NewsFeedUiState.Success
@@ -274,7 +274,7 @@ private fun LoadingStatePreview() {
 @Composable
 private fun BookmarksGridPreview(
     @PreviewParameter(UserNewsResourcePreviewParameterProvider::class)
-    userNewsResources: List<UserNewsResource>,
+    userNewsResources: List<sobaya.app.sharemodel.UserNewsResource>,
 ) {
     NiaTheme {
         BookmarksGrid(

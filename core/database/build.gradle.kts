@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.model)
+    implementation(projects.core.shareModel)
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.datetime)

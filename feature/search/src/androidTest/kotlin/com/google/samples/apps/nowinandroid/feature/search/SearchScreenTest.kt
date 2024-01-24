@@ -29,10 +29,10 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performScrollToIndex
 import com.google.samples.apps.nowinandroid.core.data.model.RecentSearchQuery
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig.DARK
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand.ANDROID
-import com.google.samples.apps.nowinandroid.core.model.data.UserData
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.DarkThemeConfig.DARK
+import sobaya.app.sharemodel.ThemeBrand.ANDROID
+import sobaya.app.sharemodel.UserData
+import sobaya.app.sharemodel.UserNewsResource
 import com.google.samples.apps.nowinandroid.core.testing.data.followableTopicTestData
 import com.google.samples.apps.nowinandroid.core.testing.data.newsResourcesTestData
 import org.junit.Before
@@ -57,7 +57,7 @@ class SearchScreenTest {
     private lateinit var tryAnotherSearchString: String
     private lateinit var searchNotReadyString: String
 
-    private val userData: UserData = UserData(
+    private val userData: sobaya.app.sharemodel.UserData = sobaya.app.sharemodel.UserData(
         bookmarkedNewsResources = setOf("1", "3"),
         viewedNewsResources = setOf("1", "2", "4"),
         followedTopics = emptySet(),
@@ -169,7 +169,7 @@ class SearchScreenTest {
             SearchScreen(
                 searchResultUiState = SearchResultUiState.Success(
                     newsResources = newsResourcesTestData.map {
-                        UserNewsResource(
+                        sobaya.app.sharemodel.UserNewsResource(
                             newsResource = it,
                             userData = userData,
                         )

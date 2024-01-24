@@ -45,8 +45,8 @@ import com.google.samples.apps.nowinandroid.core.analytics.LocalAnalyticsHelper
 import com.google.samples.apps.nowinandroid.core.data.repository.UserNewsResourceRepository
 import com.google.samples.apps.nowinandroid.core.data.util.NetworkMonitor
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
-import com.google.samples.apps.nowinandroid.core.model.data.DarkThemeConfig
-import com.google.samples.apps.nowinandroid.core.model.data.ThemeBrand
+import sobaya.app.sharemodel.DarkThemeConfig
+import sobaya.app.sharemodel.ThemeBrand
 import com.google.samples.apps.nowinandroid.ui.NiaApp
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -205,8 +205,8 @@ private fun shouldUseAndroidTheme(
 ): Boolean = when (uiState) {
     Loading -> false
     is Success -> when (uiState.userData.themeBrand) {
-        ThemeBrand.DEFAULT -> false
-        ThemeBrand.ANDROID -> true
+        sobaya.app.sharemodel.ThemeBrand.DEFAULT -> false
+        sobaya.app.sharemodel.ThemeBrand.ANDROID -> true
     }
 }
 
@@ -231,9 +231,9 @@ private fun shouldUseDarkTheme(
 ): Boolean = when (uiState) {
     Loading -> isSystemInDarkTheme()
     is Success -> when (uiState.userData.darkThemeConfig) {
-        DarkThemeConfig.FOLLOW_SYSTEM -> isSystemInDarkTheme()
-        DarkThemeConfig.LIGHT -> false
-        DarkThemeConfig.DARK -> true
+        sobaya.app.sharemodel.DarkThemeConfig.FOLLOW_SYSTEM -> isSystemInDarkTheme()
+        sobaya.app.sharemodel.DarkThemeConfig.LIGHT -> false
+        sobaya.app.sharemodel.DarkThemeConfig.DARK -> true
     }
 }
 

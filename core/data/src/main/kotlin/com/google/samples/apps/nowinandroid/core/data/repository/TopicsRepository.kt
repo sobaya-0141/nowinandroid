@@ -17,17 +17,17 @@
 package com.google.samples.apps.nowinandroid.core.data.repository
 
 import com.google.samples.apps.nowinandroid.core.data.Syncable
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.Topic
 import kotlinx.coroutines.flow.Flow
 
 interface TopicsRepository : Syncable {
     /**
      * Gets the available topics as a stream
      */
-    fun getTopics(): Flow<List<Topic>>
+    fun getTopics(): Flow<List<sobaya.app.sharemodel.Topic>>
 
     /**
      * Gets data for a specific topic
      */
-    fun getTopic(id: String): Flow<Topic>
+    fun getTopic(id: String): Flow<sobaya.app.sharemodel.Topic>
 }

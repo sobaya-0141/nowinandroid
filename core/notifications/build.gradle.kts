@@ -25,7 +25,7 @@ android {
 
 dependencies {
     implementation(projects.core.common)
-    implementation(projects.core.model)
+    implementation(projects.core.shareModel)
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.browser)

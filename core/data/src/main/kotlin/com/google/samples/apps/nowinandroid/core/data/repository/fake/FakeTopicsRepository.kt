@@ -18,7 +18,7 @@ package com.google.samples.apps.nowinandroid.core.data.repository.fake
 
 import com.google.samples.apps.nowinandroid.core.data.Synchronizer
 import com.google.samples.apps.nowinandroid.core.data.repository.TopicsRepository
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.Topic
 import com.google.samples.apps.nowinandroid.core.network.Dispatcher
 import com.google.samples.apps.nowinandroid.core.network.NiaDispatchers.IO
 import com.google.samples.apps.nowinandroid.core.network.fake.FakeNiaNetworkDataSource
@@ -40,10 +40,10 @@ class FakeTopicsRepository @Inject constructor(
     @Dispatcher(IO) private val ioDispatcher: CoroutineDispatcher,
     private val datasource: FakeNiaNetworkDataSource,
 ) : TopicsRepository {
-    override fun getTopics(): Flow<List<Topic>> = flow {
+    override fun getTopics(): Flow<List<sobaya.app.sharemodel.Topic>> = flow {
         emit(
             datasource.getTopics().map {
-                Topic(
+                sobaya.app.sharemodel.Topic(
                     id = it.id,
                     name = it.name,
                     shortDescription = it.shortDescription,
@@ -55,7 +55,7 @@ class FakeTopicsRepository @Inject constructor(
         )
     }.flowOn(ioDispatcher)
 
-    override fun getTopic(id: String): Flow<Topic> {
+    override fun getTopic(id: String): Flow<sobaya.app.sharemodel.Topic> {
         return getTopics().map { it.first { topic -> topic.id == id } }
     }
 

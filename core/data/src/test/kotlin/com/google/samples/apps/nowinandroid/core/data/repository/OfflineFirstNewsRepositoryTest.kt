@@ -33,8 +33,8 @@ import com.google.samples.apps.nowinandroid.core.database.model.TopicEntity
 import com.google.samples.apps.nowinandroid.core.database.model.asExternalModel
 import com.google.samples.apps.nowinandroid.core.datastore.NiaPreferencesDataSource
 import com.google.samples.apps.nowinandroid.core.datastore.test.testUserPreferencesDataStore
-import com.google.samples.apps.nowinandroid.core.model.data.NewsResource
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
+import sobaya.app.sharemodel.NewsResource
+import sobaya.app.sharemodel.Topic
 import com.google.samples.apps.nowinandroid.core.network.model.NetworkChangeList
 import com.google.samples.apps.nowinandroid.core.network.model.NetworkNewsResource
 import com.google.samples.apps.nowinandroid.core.testing.notifications.TestNotifier
@@ -149,8 +149,8 @@ class OfflineFirstNewsRepositoryTest {
                 .map(PopulatedNewsResource::asExternalModel)
 
             assertEquals(
-                newsResourcesFromNetwork.map(NewsResource::id).sorted(),
-                newsResourcesFromDb.map(NewsResource::id).sorted(),
+                newsResourcesFromNetwork.map(sobaya.app.sharemodel.NewsResource::id).sorted(),
+                newsResourcesFromDb.map(sobaya.app.sharemodel.NewsResource::id).sorted(),
             )
 
             // After sync version should be updated
@@ -175,7 +175,7 @@ class OfflineFirstNewsRepositoryTest {
 
             // Delete half of the items on the network
             val deletedItems = newsResourcesFromNetwork
-                .map(NewsResource::id)
+                .map(sobaya.app.sharemodel.NewsResource::id)
                 .partition { it.chars().sum() % 2 == 0 }
                 .first
                 .toSet()
@@ -196,8 +196,8 @@ class OfflineFirstNewsRepositoryTest {
 
             // Assert that items marked deleted on the network have been deleted locally
             assertEquals(
-                expected = (newsResourcesFromNetwork.map(NewsResource::id) - deletedItems).sorted(),
-                actual = newsResourcesFromDb.map(NewsResource::id).sorted(),
+                expected = (newsResourcesFromNetwork.map(sobaya.app.sharemodel.NewsResource::id) - deletedItems).sorted(),
+                actual = newsResourcesFromDb.map(sobaya.app.sharemodel.NewsResource::id).sorted(),
             )
 
             // After sync version should be updated
@@ -241,8 +241,8 @@ class OfflineFirstNewsRepositoryTest {
                 .map(PopulatedNewsResource::asExternalModel)
 
             assertEquals(
-                expected = newsResourcesFromNetwork.map(NewsResource::id).sorted(),
-                actual = newsResourcesFromDb.map(NewsResource::id).sorted(),
+                expected = newsResourcesFromNetwork.map(sobaya.app.sharemodel.NewsResource::id).sorted(),
+                actual = newsResourcesFromDb.map(sobaya.app.sharemodel.NewsResource::id).sorted(),
             )
 
             // After sync version should be updated
@@ -348,7 +348,7 @@ class OfflineFirstNewsRepositoryTest {
             // that the user follows
             assertEquals(
                 expected = followedNewsResourceIdsFromNetwork,
-                actual = notifier.addedNewsResources.first().map(NewsResource::id).sorted(),
+                actual = notifier.addedNewsResources.first().map(sobaya.app.sharemodel.NewsResource::id).sorted(),
             )
         }
 
@@ -368,8 +368,8 @@ class OfflineFirstNewsRepositoryTest {
             newsResourceDao.upsertNewsResources(networkNewsResources)
 
             val followedTopicIds = newsResources
-                .flatMap(NewsResource::topics)
-                .map(Topic::id)
+                .flatMap(sobaya.app.sharemodel.NewsResource::topics)
+                .map(sobaya.app.sharemodel.Topic::id)
                 .toSet()
 
             // Follow all topics

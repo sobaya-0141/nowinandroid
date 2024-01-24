@@ -23,9 +23,9 @@ import com.google.samples.apps.nowinandroid.core.data.repository.NewsResourceQue
 import com.google.samples.apps.nowinandroid.core.data.repository.TopicsRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.UserDataRepository
 import com.google.samples.apps.nowinandroid.core.data.repository.UserNewsResourceRepository
-import com.google.samples.apps.nowinandroid.core.model.data.FollowableTopic
-import com.google.samples.apps.nowinandroid.core.model.data.Topic
-import com.google.samples.apps.nowinandroid.core.model.data.UserNewsResource
+import sobaya.app.sharemodel.FollowableTopic
+import sobaya.app.sharemodel.Topic
+import sobaya.app.sharemodel.UserNewsResource
 import com.google.samples.apps.nowinandroid.core.result.Result
 import com.google.samples.apps.nowinandroid.core.result.asResult
 import com.google.samples.apps.nowinandroid.feature.topic.navigation.TopicArgs
@@ -103,7 +103,7 @@ private fun topicUiState(
             .map { it.followedTopics }
 
     // Observe topic information
-    val topicStream: Flow<Topic> = topicsRepository.getTopic(
+    val topicStream: Flow<sobaya.app.sharemodel.Topic> = topicsRepository.getTopic(
         id = topicId,
     )
 
@@ -119,7 +119,7 @@ private fun topicUiState(
                     val (followedTopics, topic) = followedTopicToTopicResult.data
                     val followed = followedTopics.contains(topicId)
                     TopicUiState.Success(
-                        followableTopic = FollowableTopic(
+                        followableTopic = sobaya.app.sharemodel.FollowableTopic(
                             topic = topic,
                             isFollowed = followed,
                         ),
@@ -143,7 +143,7 @@ private fun newsUiState(
     userDataRepository: UserDataRepository,
 ): Flow<NewsUiState> {
     // Observe news
-    val newsStream: Flow<List<UserNewsResource>> = userNewsResourceRepository.observeAll(
+    val newsStream: Flow<List<sobaya.app.sharemodel.UserNewsResource>> = userNewsResourceRepository.observeAll(
         NewsResourceQuery(filterTopicIds = setOf(element = topicId)),
     )
 
@@ -176,13 +176,13 @@ private fun newsUiState(
 }
 
 sealed interface TopicUiState {
-    data class Success(val followableTopic: FollowableTopic) : TopicUiState
+    data class Success(val followableTopic: sobaya.app.sharemodel.FollowableTopic) : TopicUiState
     data object Error : TopicUiState
     data object Loading : TopicUiState
 }
 
 sealed interface NewsUiState {
-    data class Success(val news: List<UserNewsResource>) : NewsUiState
+    data class Success(val news: List<sobaya.app.sharemodel.UserNewsResource>) : NewsUiState
     data object Error : NewsUiState
     data object Loading : NewsUiState
 }

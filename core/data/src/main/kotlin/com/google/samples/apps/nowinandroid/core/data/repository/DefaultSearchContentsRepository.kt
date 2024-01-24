@@ -23,7 +23,7 @@ import com.google.samples.apps.nowinandroid.core.database.dao.TopicFtsDao
 import com.google.samples.apps.nowinandroid.core.database.model.PopulatedNewsResource
 import com.google.samples.apps.nowinandroid.core.database.model.asExternalModel
 import com.google.samples.apps.nowinandroid.core.database.model.asFtsEntity
-import com.google.samples.apps.nowinandroid.core.model.data.SearchResult
+import sobaya.app.sharemodel.SearchResult
 import com.google.samples.apps.nowinandroid.core.network.Dispatcher
 import com.google.samples.apps.nowinandroid.core.network.NiaDispatchers.IO
 import kotlinx.coroutines.CoroutineDispatcher
@@ -58,7 +58,7 @@ class DefaultSearchContentsRepository @Inject constructor(
         }
     }
 
-    override fun searchContents(searchQuery: String): Flow<SearchResult> {
+    override fun searchContents(searchQuery: String): Flow<sobaya.app.sharemodel.SearchResult> {
         // Surround the query by asterisks to match the query when it's in the middle of
         // a word
         val newsResourceIds = newsResourceFtsDao.searchAllNewsResources("*$searchQuery*")
@@ -75,7 +75,7 @@ class DefaultSearchContentsRepository @Inject constructor(
             .distinctUntilChanged()
             .flatMapLatest(topicDao::getTopicEntities)
         return combine(newsResourcesFlow, topicsFlow) { newsResources, topics ->
-            SearchResult(
+            sobaya.app.sharemodel.SearchResult(
                 topics = topics.map { it.asExternalModel() },
                 newsResources = newsResources.map { it.asExternalModel() },
             )

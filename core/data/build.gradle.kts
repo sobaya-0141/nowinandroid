@@ -35,7 +35,7 @@ dependencies {
     implementation(projects.core.common)
     implementation(projects.core.database)
     implementation(projects.core.datastore)
-    implementation(projects.core.model)
+    implementation(projects.core.shareModel)
     implementation(projects.core.network)
     implementation(projects.core.notifications)
     implementation(libs.androidx.core.ktx)
