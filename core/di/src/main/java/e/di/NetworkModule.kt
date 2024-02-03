@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,32 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.core.network.di
+package e.di
 
-import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
-import com.google.samples.apps.nowinandroid.core.network.di.fake.FakeNiaNetworkDataSource
-import dagger.Binds
+import android.content.Context
+import com.google.samples.apps.nowinandroid.core.network.di.fake.FakeAssetManager
+import com.google.samples.apps.nowinandroid.core.network.fake.FakeAssetManager
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface FlavoredNetworkModule {
+object NetworkModule {
 
-    @Binds
-    fun binds(impl: FakeNiaNetworkDataSource): NiaNetworkDataSource
+    @Provides
+    @Singleton
+    fun providesNetworkJson(): Json = Json {
+        ignoreUnknownKeys = true
+    }
+
+    @Provides
+    @Singleton
+    fun providesFakeAssetManager(
+        @ApplicationContext context: Context,
+    ): FakeAssetManager = FakeAssetManager(context.assets::open)
 }

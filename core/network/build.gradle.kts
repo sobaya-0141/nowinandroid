@@ -18,6 +18,7 @@ plugins {
     alias(libs.plugins.nowinandroid.android.library)
     alias(libs.plugins.nowinandroid.android.library.jacoco)
     alias(libs.plugins.nowinandroid.android.hilt)
+    alias(libs.plugins.ksp)
     id("kotlinx-serialization")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
@@ -41,6 +42,7 @@ secrets {
 dependencies {
     implementation(projects.core.common)
     implementation(projects.core.shareModel)
+    implementation(projects.core.repository)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.svg)
     implementation(libs.kotlinx.coroutines.android)

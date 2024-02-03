@@ -27,6 +27,7 @@ import kotlinx.datetime.toInstant
 import kotlinx.serialization.json.Json
 import org.junit.Before
 import org.junit.Test
+import com.google.samples.apps.nowinandroid.core.network.di.fake.FakeNiaNetworkDataSource
 import kotlin.test.assertEquals
 
 class FakeNiaNetworkDataSourceTest {

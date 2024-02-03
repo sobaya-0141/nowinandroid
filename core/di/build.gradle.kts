@@ -13,37 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 plugins {
     alias(libs.plugins.nowinandroid.android.library)
     alias(libs.plugins.nowinandroid.android.library.jacoco)
     alias(libs.plugins.nowinandroid.android.hilt)
+    alias(libs.plugins.ksp)
+    id("kotlinx-serialization")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
-    defaultConfig {
-        testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
+    buildFeatures {
+        buildConfig = true
     }
-    namespace = "com.google.samples.apps.nowinandroid.sync"
+    namespace = "e.di"
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+}
+
+secrets {
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
 
 dependencies {
-    implementation(projects.core.analytics)
     implementation(projects.core.common)
-    implementation(projects.core.data)
-    implementation(projects.core.datastore)
     implementation(projects.core.shareModel)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.tracing.ktx)
-    implementation(libs.androidx.work.ktx)
-    implementation(libs.hilt.ext.work)
+    implementation(projects.core.repository)
+    implementation(projects.core.network)
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.svg)
     implementation(libs.kotlinx.coroutines.android)
-
-    prodImplementation(libs.firebase.cloud.messaging)
-
-    kapt(libs.hilt.ext.compiler)
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(projects.core.testing)
-
-    androidTestImplementation(projects.core.testing)
-    androidTestImplementation(libs.androidx.work.testing)
 }

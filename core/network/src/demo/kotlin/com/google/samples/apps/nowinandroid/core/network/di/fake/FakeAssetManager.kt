@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 The Android Open Source Project
+ * Copyright 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.core.network.di
+package com.google.samples.apps.nowinandroid.core.network.di.fake
 
-import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
-import com.google.samples.apps.nowinandroid.core.network.di.fake.FakeNiaNetworkDataSource
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import java.io.InputStream
 
-@Module
-@InstallIn(SingletonComponent::class)
-interface FlavoredNetworkModule {
-
-    @Binds
-    fun binds(impl: FakeNiaNetworkDataSource): NiaNetworkDataSource
+fun interface FakeAssetManager {
+    fun open(fileName: String): InputStream
 }

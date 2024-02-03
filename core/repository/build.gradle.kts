@@ -52,6 +52,7 @@ kotlin {
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(projects.core.shareModel)
+                implementation(libs.ktorfit.lib)
             }
         }
         val commonTest by getting {
@@ -64,7 +65,7 @@ kotlin {
 
 android {
     namespace = "sobaya.sample.repository"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 24
     }

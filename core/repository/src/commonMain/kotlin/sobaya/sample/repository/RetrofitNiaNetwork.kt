@@ -14,28 +14,20 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.core.network.retrofit
+package sobaya.sample.repository
 
-import com.google.samples.apps.nowinandroid.core.network.BuildConfig
-import com.google.samples.apps.nowinandroid.core.network.NiaNetworkDataSource
+import de.jensklingenberg.ktorfit.Ktorfit
+import de.jensklingenberg.ktorfit.http.GET
+import de.jensklingenberg.ktorfit.http.Query
+import kotlinx.serialization.Serializable
 import sobaya.sample.repository.model.NetworkChangeList
 import sobaya.sample.repository.model.NetworkNewsResource
 import sobaya.sample.repository.model.NetworkTopic
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import okhttp3.Call
-import okhttp3.MediaType.Companion.toMediaType
-import retrofit2.Retrofit
-import retrofit2.http.GET
-import retrofit2.http.Query
-import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Retrofit API declaration for NIA Network API
  */
-private interface RetrofitNiaNetworkApi {
+internal interface RetrofitNiaNetworkApi {
     @GET(value = "topics")
     suspend fun getTopics(
         @Query("id") ids: List<String>?,
@@ -57,33 +49,30 @@ private interface RetrofitNiaNetworkApi {
     ): List<NetworkChangeList>
 }
 
-private const val NIA_BASE_URL = BuildConfig.BACKEND_URL
+private const val NIA_BASE_URL = "http://example.com"
 
 /**
  * Wrapper for data provided from the [NIA_BASE_URL]
  */
 @Serializable
-private data class NetworkResponse<T>(
+data class NetworkResponse<T>(
     val data: T,
 )
 
 /**
  * [Retrofit] backed [NiaNetworkDataSource]
  */
-@Singleton
-class RetrofitNiaNetwork @Inject constructor(
-    networkJson: Json,
-    okhttpCallFactory: Call.Factory,
+class RetrofitNiaNetwork constructor(
+//    networkJson: Json,
 ) : NiaNetworkDataSource {
 
-    private val networkApi = Retrofit.Builder()
+    private val networkApi = Ktorfit.Builder()
         .baseUrl(NIA_BASE_URL)
-        .callFactory(okhttpCallFactory)
-        .addConverterFactory(
-            networkJson.asConverterFactory("application/json".toMediaType()),
-        )
+//        .addConverterFactory(
+//            networkJson.asConverterFactory("application/json".toMediaType()),
+//        )
         .build()
-        .create(RetrofitNiaNetworkApi::class.java)
+        .create<RetrofitNiaNetworkApi>()
 
     override suspend fun getTopics(ids: List<String>?): List<NetworkTopic> =
         networkApi.getTopics(ids = ids).data

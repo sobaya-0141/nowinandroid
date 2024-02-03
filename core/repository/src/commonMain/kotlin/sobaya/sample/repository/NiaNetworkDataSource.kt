@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.core.network
+package sobaya.sample.repository
 
 import sobaya.sample.repository.model.NetworkChangeList
 import sobaya.sample.repository.model.NetworkNewsResource
